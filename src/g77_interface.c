@@ -26,7 +26,7 @@
 #if HAVE_STDINT_H
 #include <stdint.h>
 #else
-#error no <stdint.h> avaialable
+//#error no <stdint.h> avaialable
 #endif
 
 #include "common.h"
@@ -36,12 +36,12 @@
  * passed between Fortran and C as 64-bit integers instead of void
  * pointers, thus size of void* is assumed to be less or equal of 64 bits
  * throughout this interface. */
-int64_t
+int
 evaluator_create__(char *string, int length)
 {
 	char           *stringz;	/* Zero-terminated string
 					 * representing function.  */
-	int64_t         evaluator;	/* Evaluator created for function. 
+	int         evaluator;	/* Evaluator created for function.
 					 */
 
 	/* Copy string passed from Fortran code and terminate it with
@@ -51,7 +51,7 @@ evaluator_create__(char *string, int length)
 	stringz[length] = '\0';
 
 	/* Call evaluator_create() function. */
-	evaluator = (int64_t) evaluator_create(stringz);
+	evaluator = (int) evaluator_create(stringz);
 
 	/* Free string used to create evaluator. */
 	XFREE(stringz);
@@ -61,14 +61,14 @@ evaluator_create__(char *string, int length)
 
 /* Wrapper for evaluator_destroy() function.  */
 void
-evaluator_destroy__(int64_t * evaluator)
+evaluator_destroy__(int * evaluator)
 {
 	evaluator_destroy((void *) *evaluator);
 }
 
 /* Wrapper for evaluator_evaluate() function.  */
 double
-evaluator_evaluate__(int64_t * evaluator, int *count, char *names,
+evaluator_evaluate__(int * evaluator, int *count, char *names,
 		     double *values, int length)
 {
 	char          **names_copy;	/* Copy of variable names.  Names
@@ -108,7 +108,7 @@ evaluator_evaluate__(int64_t * evaluator, int *count, char *names,
 
 /* First in pair of wrappers for evaluator_get_string() function.  */
 int
-evaluator_get_string_length__(int64_t * evaluator)
+evaluator_get_string_length__(int * evaluator)
 {
 	/* Return length of evaluator textual respresentation. */
 	return strlen(evaluator_get_string((void *) *evaluator));
@@ -116,7 +116,7 @@ evaluator_get_string_length__(int64_t * evaluator)
 
 /* Second in pair of wrappers for evaluator_get_string() function.  */
 void
-evaluator_get_string_chars__(int64_t * evaluator, char *string, int length)
+evaluator_get_string_chars__(int * evaluator, char *string, int length)
 {
 	/* Copy evaluator textual respresentation to string passed from
 	 * Fortran code. */
@@ -126,7 +126,7 @@ evaluator_get_string_chars__(int64_t * evaluator, char *string, int length)
 
 /* First in pair of wrappers for evaluator_get_variables() function.  */
 int
-evaluator_get_variables_length__(int64_t * evaluator)
+evaluator_get_variables_length__(int * evaluator)
 {
 	char          **names;	/* Array with variable names. */
 	int             count;	/* Number of elements in above array. */
@@ -151,7 +151,7 @@ evaluator_get_variables_length__(int64_t * evaluator)
 
 /* Second in pair of wrappers for evaluator_get_variables() function.  */
 void
-evaluator_get_variables_chars__(int64_t * evaluator, char *string,
+evaluator_get_variables_chars__(int * evaluator, char *string,
 				int length)
 {
 	char          **names;	/* Array with variable names. */
@@ -181,13 +181,13 @@ evaluator_get_variables_chars__(int64_t * evaluator, char *string,
 }
 
 /* Wrapper for evaluator_derivative() function.  */
-int64_t
-evaluator_derivative__(int64_t * evaluator, char *name, int length)
+int
+evaluator_derivative__(int * evaluator, char *name, int length)
 {
 	char           *stringz;	/* Zero terminated string
 					 * containing derivation variable
 					 * name.  */
-	int64_t         derivative;	/* Evaluator for function
+	int         derivative;	/* Evaluator for function
 					 * derivative.  */
 
 	/* Copy variable name passed from Fortran code and terminate it
@@ -198,7 +198,7 @@ evaluator_derivative__(int64_t * evaluator, char *name, int length)
 
 	/* Call evaluator_derivative() function. */
 	derivative =
-	    (int64_t) evaluator_derivative((void *) *evaluator, stringz);
+	    (int) evaluator_derivative((void *) *evaluator, stringz);
 
 	/* Free string containing derivation variable name. */
 	XFREE(stringz);
@@ -208,43 +208,43 @@ evaluator_derivative__(int64_t * evaluator, char *name, int length)
 
 /* Wrapper for evaluator_evaluate_x() function.  */
 double
-evaluator_evaluate_x__(int64_t * evaluator, double *x)
+evaluator_evaluate_x__(int * evaluator, double *x)
 {
 	return evaluator_evaluate_x((void *) *evaluator, *x);
 }
 
 /* Wrapper for evaluator_evaluate_x_y() function.  */
 double
-evaluator_evaluate_x_y__(int64_t * evaluator, double *x, double *y)
+evaluator_evaluate_x_y__(int * evaluator, double *x, double *y)
 {
 	return evaluator_evaluate_x_y((void *) *evaluator, *x, *y);
 }
 
 /* Wrapper for evaluator_evaluate_x_y_z() function.  */
 double
-evaluator_evaluate_x_y_z__(int64_t * evaluator, double *x, double *y,
+evaluator_evaluate_x_y_z__(int * evaluator, double *x, double *y,
 			   double *z)
 {
 	return evaluator_evaluate_x_y_z((void *) *evaluator, *x, *y, *z);
 }
 
 /* Wrapper for evaluator_derivative_x() function.  */
-int64_t
-evaluator_derivative_x__(int64_t * evaluator)
+int
+evaluator_derivative_x__(int * evaluator)
 {
-	return (int64_t) evaluator_derivative_x((void *) *evaluator);
+	return (int) evaluator_derivative_x((void *) *evaluator);
 }
 
 /* Wrapper for evaluator_derivative_y() function.  */
-int64_t
-evaluator_derivative_y__(int64_t * evaluator)
+int
+evaluator_derivative_y__(int * evaluator)
 {
-	return (int64_t) evaluator_derivative_y((void *) *evaluator);
+	return (int) evaluator_derivative_y((void *) *evaluator);
 }
 
 /* Wrapper for evaluator_derivative_z() function.  */
-int64_t
-evaluator_derivative_z__(int64_t * evaluator)
+int
+evaluator_derivative_z__(int * evaluator)
 {
-	return (int64_t) evaluator_derivative_z((void *) *evaluator);
+	return (int) evaluator_derivative_z((void *) *evaluator);
 }

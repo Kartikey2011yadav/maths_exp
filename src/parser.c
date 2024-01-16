@@ -86,11 +86,12 @@
 
 #if HAVE_CONFIG_H
 #  include "config.h"
-#endif
+#ENDIF
 
-#include <stdlib.h>
+#include <STDLIB.H>
 #include "node.h"
 
+int yyparse;
 /* Variables used to communicate with code using parser.  */
 extern Node* root; /* Root of tree representation of function.  */
 extern SymbolTable *symbol_table; /* Evaluator symbol table.  */

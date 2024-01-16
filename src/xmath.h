@@ -29,7 +29,7 @@
 #if HAVE_MATH_H
 #include <math.h>
 #else
-#error no <math.h> avaialable
+//#error no <math.h> avaialable
 #endif
 
 #ifdef INFINITY

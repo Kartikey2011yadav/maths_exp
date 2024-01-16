@@ -20,7 +20,7 @@
  */
 
 #include "xmath.h"
-
+int yyparse;
 double
 math_cot(double x)
 {

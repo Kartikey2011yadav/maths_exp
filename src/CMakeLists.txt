@@ -7,11 +7,26 @@ project(maths_exp_library VERSION 0.0.1 LANGUAGES C)
 
 add_library(maths_exp SHARED
   "maths_exp.c"
+        "error.c"
+        "g77_interface.c"
+        "matheval.c"
+        "node.c"
+        "symbol_table.c"
+        "xmalloc.c"
+        "xmath.c"
 )
 
 set_target_properties(maths_exp PROPERTIES
   PUBLIC_HEADER maths_exp.h
-  PUBLIC_HEADER gsl_math.h
+  PUBLIC_HEADER common.h
+  PUBLIC_HEADER config.h
+  PUBLIC_HEADER error.h
+  PUBLIC_HEADER matheval.h
+  PUBLIC_HEADER node.h
+  PUBLIC_HEADER parser.h
+  PUBLIC_HEADER symbol_table.h
+  PUBLIC_HEADER xmalloc.h
+  PUBLIC_HEADER xmath.h
   OUTPUT_NAME "maths_exp"
 )
 
