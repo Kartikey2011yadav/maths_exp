@@ -1,4 +1,5 @@
 #include "maths_exp.h"
+#include "gsl_math.h"
 
 // A very short-lived native function.
 //
@@ -19,5 +20,5 @@ FFI_PLUGIN_EXPORT intptr_t sum_long_running(intptr_t a, intptr_t b) {
 #else
   usleep(5000 * 1000);
 #endif
-  return a + b;
+  return a+b;
 }

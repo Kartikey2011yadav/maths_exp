@@ -11,6 +11,7 @@ add_library(maths_exp SHARED
 
 set_target_properties(maths_exp PROPERTIES
   PUBLIC_HEADER maths_exp.h
+  PUBLIC_HEADER gsl_math.h
   OUTPUT_NAME "maths_exp"
 )
 
