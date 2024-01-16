@@ -18,13 +18,13 @@ FFI_PLUGIN_EXPORT intptr_t sum(intptr_t a, intptr_t b) {
     double x;			/* Variable x value.  */
     int i;			/* Loop counter. */
     f = evaluator_create ("x");
-    assert (f);
-    evaluator_get_variables (f, &names, &count);
-    f_prim = evaluator_derivative_x (f);
-    x=4.50;
-    int t = evaluator_evaluate_x (f_prim, x);
-    evaluator_destroy (f);
-    evaluator_destroy (f_prim);
+//    assert (f);
+//    evaluator_get_variables (f, &names, &count);
+//    f_prim = evaluator_derivative_x (f);
+//    x=4.50;
+//    int t = evaluator_evaluate_x (f_prim, x);
+//    evaluator_destroy (f);
+//    evaluator_destroy (f_prim);
     return a+b; }
 
 // A longer-lived native function, which occupies the thread calling it.

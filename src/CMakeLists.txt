@@ -12,8 +12,11 @@ add_library(maths_exp SHARED
         "matheval.c"
         "node.c"
         "symbol_table.c"
+        "scanner.c"
         "xmalloc.c"
         "xmath.c"
+        "scanner.l"
+        "parser.y"
 )
 
 set_target_properties(maths_exp PROPERTIES
