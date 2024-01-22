@@ -12,6 +12,15 @@ add_library(maths_exp SHARED
         "message.c"
         "stream.c"
         "strerror.c"
+        "matheval/error.c"
+        "matheval/g77_interface.c"
+        "matheval/matheval.c"
+        "matheval/node.c"
+        "matheval/parser.c"
+        "matheval/scanner.c"
+        "matheval/symbol_table.c"
+        "matheval/xmalloc.c"
+        "matheval/xmath.c"
         )
 
 set_target_properties(maths_exp PROPERTIES
@@ -30,7 +39,15 @@ set_target_properties(maths_exp PROPERTIES
         PUBLIC_HEADER gsl_diff.h
         PUBLIC_HEADER gsl_errno.h
         PUBLIC_HEADER gsl_message.h
-
+        PUBLIC_HEADER matheval/common.h
+        PUBLIC_HEADER matheval/config.h
+        PUBLIC_HEADER matheval/error.h
+        PUBLIC_HEADER matheval/matheval.h
+        PUBLIC_HEADER matheval/node.h
+        PUBLIC_HEADER matheval/parser.h
+        PUBLIC_HEADER matheval/symbol_table.h
+        PUBLIC_HEADER matheval/xmalloc.h
+        PUBLIC_HEADER matheval/xmath.h
         OUTPUT_NAME "maths_exp"
         )
 

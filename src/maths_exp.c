@@ -2,6 +2,10 @@
 #include "maths_exp.h"
 #include "gsl_math.h"
 #include "gsl_diff.h"
+#include "matheval.h"
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
 
 double f (double x, void * params)
 {
@@ -15,7 +19,22 @@ FFI_PLUGIN_EXPORT intptr_t sum(intptr_t a, intptr_t b) {
     F.function = &f;
     F.params = 0;
     gsl_diff_central(&F, 6.0, &result, &abserr);
-    return result; }
+
+    void *f, *f_prim;		/* Evaluators for function and function derivative.  */
+    char **names;			/* Function variables names. */
+    int count;			/* Number of function variables. */
+    double x;
+
+    /* Create evaluator for function.  */
+    f = evaluator_create ("x^4");
+    assert (f);
+    /* Print variable names appearing in function. */
+    evaluator_get_variables (f, &names, &count);
+    f_prim = evaluator_derivative_x (f);
+    int val = evaluator_evaluate_x (f_prim, x);
+    evaluator_destroy (f);
+    evaluator_destroy (f_prim);
+    return val; }
 
 FFI_PLUGIN_EXPORT intptr_t sum_long_running(intptr_t a, intptr_t b) {
   // Simulate work.
