@@ -7,7 +7,11 @@ project(maths_exp_library VERSION 0.0.1 LANGUAGES C)
 
 add_library(maths_exp SHARED
         "maths_exp.c"
-
+        "diff.c"
+        "error.c"
+        "message.c"
+        "stream.c"
+        "strerror.c"
         )
 
 set_target_properties(maths_exp PROPERTIES
@@ -23,6 +27,10 @@ set_target_properties(maths_exp PROPERTIES
        PUBLIC_HEADER gsl_sys.h
         PUBLIC_HEADER templates_off.h
         PUBLIC_HEADER templates_on.h
+        PUBLIC_HEADER gsl_diff.h
+        PUBLIC_HEADER gsl_errno.h
+        PUBLIC_HEADER gsl_message.h
+
         OUTPUT_NAME "maths_exp"
         )
 
