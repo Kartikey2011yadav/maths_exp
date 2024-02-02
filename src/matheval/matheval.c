@@ -23,7 +23,7 @@
 #include "config.h"
 #endif
 
-//#include "parser.h"
+#include "parser.h"
 #include "common.h"
 #include "matheval.h"
 #include "node.h"
