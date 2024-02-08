@@ -50,13 +50,11 @@ FFI_PLUGIN_EXPORT intptr_t sum(intptr_t a, intptr_t b) {
        bounded here to 256 characters, in real conditions one should
        probably use GNU readline() instead of fgets() to overcome this
        limit.  */
-//    buffer = "x^3";
-    length = strlen (buffer);
-//    if (length > 0 && buffer[length - 1] == '\n')
-//        buffer[length - 1] = '\0';
+//   buffer = "x^3";
+
 
     /* Create evaluator for function.  */
-    f = evaluator_create (buffer);
+    f = evaluator_create ("x^3");
     assert (f);
 
     /* Print variable names appearing in function. */
@@ -71,17 +69,18 @@ FFI_PLUGIN_EXPORT intptr_t sum(intptr_t a, intptr_t b) {
     /* Read variable x value.  */
 //    printf ("x = ");
 //    scanf ("%lf", &x);
-    x= 6;
+//    x= 6;
+//
+//    /* Calculate and print values of function and its derivative for given
+//       value of x.  */
+//    printf ("  f(%g) = %g\n", x, evaluator_evaluate_x (f, x));
+//    printf ("  f'(%g) = %g\n", x, evaluator_evaluate_x (f_prim, x));
 
-    /* Calculate and print values of function and its derivative for given
-       value of x.  */
-    printf ("  f(%g) = %g\n", x, evaluator_evaluate_x (f, x));
-    printf ("  f'(%g) = %g\n", x, evaluator_evaluate_x (f_prim, x));
-
-    /* Destroy evaluators.  */
-    evaluator_destroy (f);
-    evaluator_destroy (f_prim);
-    return evaluator_evaluate_x (f_prim, x);
+//    /* Destroy evaluators.  */
+//    evaluator_destroy (f);
+//    evaluator_destroy (f_prim);
+//    return evaluator_evaluate_x (f_prim, x);
+    return (a+b);
 }
 
 FFI_PLUGIN_EXPORT intptr_t sum_long_running(intptr_t a, intptr_t b) {

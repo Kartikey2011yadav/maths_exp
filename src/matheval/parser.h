@@ -29,7 +29,12 @@
    
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
+#if HAVE_CONFIG_H
+#include "config.h"
+#endif
 
+#include <stdlib.h>
+#include "node.h"
 #ifndef YY_YY_PARSER_H_INCLUDED
 # define YY_YY_PARSER_H_INCLUDED
 /* Enabling traces.  */

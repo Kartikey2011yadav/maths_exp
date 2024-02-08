@@ -14,6 +14,10 @@ find_package(BISON 3.0 REQUIRED)
 set(SCANNER_OUT "${SRC_DIR}/scanner.c")
 set(PARSER_OUT "${SRC_DIR}/parser.c")
 
+flex_target(SCANNER "${SRC_DIR}/scanner.l" "${SCANNER_OUT}" DEFINES_FILE "${SRC_DIR}/scanner.h")
+bison_target(PARSER "${SRC_DIR}/parser.y" "${PARSER_OUT}" DEFINES_FILE "${SRC_DIR}/parser.h")
+
+add_flex_bison_dependency(SCANNER PARSER)
 
 add_library(maths_exp SHARED
         "maths_exp.c"
@@ -57,8 +61,4 @@ set_target_properties(maths_exp PROPERTIES
         PUBLIC_HEADER matheval/xmath.h
         OUTPUT_NAME "maths_exp"
         )
-flex_target(SCANNER "${SRC_DIR}/scanner.l" "${SCANNER_OUT}" DEFINES_FILE "${SRC_DIR}/scanner.h")
-bison_target(PARSER "${SRC_DIR}/parser.y" "${PARSER_OUT}" DEFINES_FILE "${SRC_DIR}/parser.h")
-
-add_flex_bison_dependency(SCANNER PARSER)
 target_compile_definitions(maths_exp PUBLIC DART_SHARED_LIB)
