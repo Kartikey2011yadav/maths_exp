@@ -37,15 +37,15 @@ add_library(maths_exp SHARED
 
 set_target_properties(maths_exp PROPERTIES
         PUBLIC_HEADER maths_exp.h
-       PUBLIC_HEADER gsl_math.h
-       PUBLIC_HEADER gsl_inline.h
-       PUBLIC_HEADER gsl_machine.h
-       PUBLIC_HEADER gsl_pow_int.h
-       PUBLIC_HEADER gsl_precision.h
-       PUBLIC_HEADER gsl_nan.h
-       PUBLIC_HEADER gsl_minmax.h
+        PUBLIC_HEADER gsl_math.h
+        PUBLIC_HEADER gsl_inline.h
+        PUBLIC_HEADER gsl_machine.h
+        PUBLIC_HEADER gsl_pow_int.h
+        PUBLIC_HEADER gsl_precision.h
+        PUBLIC_HEADER gsl_nan.h
+        PUBLIC_HEADER gsl_minmax.h
         PUBLIC_HEADER gsl_types.h
-       PUBLIC_HEADER gsl_sys.h
+        PUBLIC_HEADER gsl_sys.h
         PUBLIC_HEADER templates_off.h
         PUBLIC_HEADER templates_on.h
         PUBLIC_HEADER gsl_diff.h
