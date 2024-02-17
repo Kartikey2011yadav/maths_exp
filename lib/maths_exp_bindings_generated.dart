@@ -46,13 +46,13 @@ class MathsExpBindings {
   late final _sum_long_running =
       _sum_long_runningPtr.asFunction<int Function(int, int)>();
   
-  double diff(String eq, double x,){
-    return _diff(eq,x);
-  }
+  // double diff(String eq, double x,){
+  //   // return _diff(eq,x);
+  // }
 
-  late final _diffPtr =
-  _lookup<ffi.NativeFunction<ffi.Double Function(, ffi.Double)>>(
-      'sum_long_running');
-  late final _diff =
-  _diffPtr.asFunction<double Function()>();
+  // late final _diffPtr =
+  // _lookup<ffi.NativeFunction<ffi.Double Function(, ffi.Double)>>(
+  //     'sum_long_running');
+  // late final _diff =
+  // _diffPtr.asFunction<double Function()>();
 }
