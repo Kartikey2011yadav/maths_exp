@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
                   future: sumAsyncResult,
                   builder: (BuildContext context, AsyncSnapshot<int> value) {
                     final displayValue =
-                        (value.hasData) ? value.data : 'loading';
+                        (value.hasData) ? value.data : 'loading...';
                     return Text(
                       'await sumAsync(3, 4) = $displayValue',
                       style: textStyle,
